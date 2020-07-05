@@ -21,4 +21,4 @@ exclude:
 plugins:
   - jekyll-sitemap
 
-theme: jekyll-theme-minimal
+theme: jekyll-theme-slate
