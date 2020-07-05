@@ -20,3 +20,5 @@ exclude:
 
 plugins:
   - jekyll-sitemap
+
+theme: jekyll-theme-minimal
