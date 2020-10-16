@@ -2017,6 +2017,7 @@
 			background-color: transparent;
 			box-shadow: inset 0 0 0 2px rgb(238, 235, 235);
 			color: #000 !important;
+			font-weight:bold;
 		}
 
 			input[type="submit"].alt:hover,
