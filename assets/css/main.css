@@ -3942,6 +3942,8 @@
 						line-height: 3.5rem;
 						text-decoration: none;
 						text-transform: uppercase;
+
+						transition: color .357s;
 					}
 
 						#menu > ul.links > li > a:not(.button):hover {
