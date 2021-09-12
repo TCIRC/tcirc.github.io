@@ -1,12 +1,59 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="TCIRC, 臺中一中電腦資訊研習社">
+
     <link rel="shortcut icon" href="https://tcirc.tw/favicon.ico" type="image/favicon.png" />
     <link rel="icon" href="https://tcirc.tw/favicon.ico" type="image/favicon.png" />
+    <link rel="stylesheet" href="assets/css/main.css">
+    <script>
+      let courseList=[["test","a"]];
+
+      // define commands
+      class Command {
+        constructor(command){
+          this.name=command;
+        }
+        consoleLog(){
+          console.log(this.name);
+        }
+        run(){
+          console.log("not defined")
+        }
+      };
+
+      let LS = new Command("ls");
+      
+      LS.consoleLog();
+
+      // IO
+      let input=new Array;
+      
+      // regular
+      document.addEventListener('keydown',(event)=>{
+        if((48<=event.which&&event.which<=90)||(96<=event.which&&event.which<=111)||(160<=event.which&&event.which<=165)||(186<=event.which&&event.which<=223)){
+          input.push(event.key);
+          document.getElementById('console').innerText+=event.key;
+        }
+        // space
+        if(event.which==32){
+          input.push(' ');
+          document.getElementById('console').innerText+=' ';
+        }
+      });
+      document.addEventListener('keydown',(e)=>{
+
+      })
+      // init
+
+    </script>
   </head>
   <body>
-    網站更新中!
-    <a href="github.com/TCIRC">github</a>
-    <a href="/old/38">38 th 學長的網站</a>
+    <div class="console"id="console">
+      網站更新中!
+      <a href="https://github.com/TCIRC/tcirc.github.io">github</a>
+      <a href="old/38">38 th 學長的網站</a>
+    </div>
   </body>
 </html>

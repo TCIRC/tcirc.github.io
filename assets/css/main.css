@@ -1,0 +1,12 @@
+body{
+  background-color: black;
+  
+}
+.console{
+  color:white;
+  font-size: 13px;
+  font-family: monospace;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
