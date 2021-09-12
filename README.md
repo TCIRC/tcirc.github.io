@@ -1,5 +1,5 @@
 # 臺中一中電腦資訊研習社
 
-- ig: [@tcirc_38th](https://instagram.com/tcirc_38th?igshid=k4us3x6i6zlp)
+- ig: [@tcirc_39th](https://www.instagram.com/tcirc_39th/)
 - Online Judge: [https://judge.tcirc.tw/](https://judge.tcirc.tw/)
 
