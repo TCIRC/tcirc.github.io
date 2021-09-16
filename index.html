@@ -8,7 +8,8 @@
     <link rel="icon" href="https://tcirc.tw/favicon.ico" type="image/favicon.png" />
     <link rel="stylesheet" href="assets/css/main.css">
     <script>
-      let courseList=[["test","a"]];
+      // links, ['displayName', 'hyperLink(need https:// etc.)']
+      let courseList=[["Google","https://google.com"],["Youtube", "https://youtube.com"]];
 
       // define commands
       class Command {
@@ -26,6 +27,15 @@
       let LS = new Command("ls");
       
       LS.consoleLog();
+      LS.run=()=>{
+        courseList.forEach((item)=>{
+          console.log(item)
+          let node = document.createElement('a');
+          node.innerText=item[0];
+          node.href=item[1];
+          document.getElementById("console").appendChild(node);
+        })
+      }
 
       // IO
       let input=new Array;
@@ -34,13 +44,30 @@
       document.addEventListener('keydown',(event)=>{
         if((48<=event.which&&event.which<=90)||(96<=event.which&&event.which<=111)||(160<=event.which&&event.which<=165)||(186<=event.which&&event.which<=223)){
           input.push(event.key);
-          document.getElementById('console').innerText+=event.key;
+          document.getElementById('input').innerText+=event.key;
         }
         // space
         if(event.which==32){
           input.push(' ');
-          document.getElementById('console').innerText+=' ';
+          document.getElementById('input').innerText+=' ';
         }
+        // enter
+        if(event.which==13){
+          console.log(input);
+          let inputStr='';
+          input.forEach((item)=>{
+            if(item!='/')
+              inputStr+=item;
+            else console.log('bad command')
+          });
+        
+          console.log(inputStr)
+          input=new Array;
+          document.getElementById('input').innerText='';
+
+          LS.run();
+        }
+          
       });
       document.addEventListener('keydown',(e)=>{
 
@@ -54,6 +81,7 @@
       網站更新中!
       <a href="https://github.com/TCIRC/tcirc.github.io">github</a>
       <a href="old/38">38 th 學長的網站</a>
+      <div id="input"></div>
     </div>
   </body>
 </html>

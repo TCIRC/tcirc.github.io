@@ -13,7 +13,7 @@ social-network-links:
 # Create a "tags" index page and make tags on each post clickable
 link-tags: true
 
-# highlighter: rouge
+highlighter: rouge
 
 exclude:
   README.md
