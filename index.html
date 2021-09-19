@@ -8,6 +8,7 @@
     <link rel="icon" href="https://tcirc.tw/favicon.ico" type="image/favicon.png" />
     <link rel="stylesheet" href="assets/css/main.css">
     <script>
+      let prefix='guest@tcirc.tw:~$ ';
       // links, ['displayName', 'hyperLink(need https:// etc.)']
       let courseList=[["Google","https://google.com"],["Youtube", "https://youtube.com"]];
 
@@ -33,7 +34,7 @@
           let node = document.createElement('a');
           node.innerText=item[0];
           node.href=item[1];
-          document.getElementById("console").appendChild(node);
+          document.getElementById("console").insertBefore(node,document.getElementById('inputDiv'));
         })
       }
 
@@ -60,11 +61,15 @@
               inputStr+=item;
             else console.log('bad command')
           });
-        
+          
+          let node = document.createElement('div');
+          node.innerText=prefix+inputStr;
+          document.getElementById("console").insertBefore(node,document.getElementById('inputDiv'));
+
           console.log(inputStr)
           input=new Array;
           document.getElementById('input').innerText='';
-
+          
           LS.run();
         }
           
@@ -81,7 +86,7 @@
       網站更新中!
       <a href="https://github.com/TCIRC/tcirc.github.io">github</a>
       <a href="old/38">38 th 學長的網站</a>
-      <div id="input"></div>
+      <div class="inputDiv" id="inputDiv">guest@tcirc.tw:~$ <span id="input"></span></div>
     </div>
   </body>
 </html>
