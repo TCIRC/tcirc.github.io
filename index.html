@@ -43,6 +43,7 @@
       
       // regular
       document.addEventListener('keydown',(event)=>{
+        document.getElementById('inputDiv').scrollIntoView();
         if((48<=event.which&&event.which<=90)||(96<=event.which&&event.which<=111)||(160<=event.which&&event.which<=165)||(186<=event.which&&event.which<=223)){
           input.push(event.key);
           document.getElementById('input').innerText+=event.key;
