@@ -9,47 +9,94 @@
     <link rel="stylesheet" href="assets/css/main.css">
     <script>
       let prefix='guest@tcirc.tw:~$ ';
+      let input=new Array;
       // links, ['displayName', 'hyperLink(need https:// etc.)']
       let courseList=[["Google","https://google.com"],["Youtube", "https://youtube.com"]];
 
       // define commands
       class Command {
         constructor(command){
-          this.name=command;
+          this.command=command;
         }
         consoleLog(){
-          console.log(this.name);
+          console.log(this.command);
         }
         run(){
           console.log("not defined")
         }
+        help(){
+          return('Help message here!'); 
+        }
+        get(){
+          return this.command;
+        }
       };
+
+      let CommandInstances=[]
 
       let LS = new Command("ls");
 
       LS.run=()=>{
         courseList.forEach((item)=>{
-          console.log(item)
           let node = document.createElement('a');
           node.innerText=item[0];
           node.href=item[1];
           document.getElementById("console").insertBefore(node,document.getElementById('inputDiv'));
+          node.scrollIntoView();
         })
       }
+      LS.help=()=>{
+        return('List all file.')
+      }
+      CommandInstances.push(LS)
 
       let Logo = new Command("logo");
 
       Logo.run=()=>{
-        let node = document.getElementById('ascii');
+        let souceNode = document.getElementById('ascii');
+        let node=souceNode.cloneNode(true)
         node.hidden=false;
         node.style.display='inline';
         document.getElementById("console").insertBefore(node,document.getElementById('inputDiv'))
+        node.scrollIntoView();
       }
+      Logo.help=()=>{
+        return('Output awsome ascii art logo.')
+      }
+      CommandInstances.push(Logo)
 
       let Help= new Command("help");
-
+      Help.run=()=>{
+        let display = document.createElement('div');
+        display.innerText='Showing all commands:';
+        document.getElementById("console").insertBefore(display,document.getElementById('inputDiv'));
+        CommandInstances.forEach((item)=>{
+          let node = document.createElement('div');
+          let name=item.get();
+          node.innerText=name;
+          node.innerText+=' -> ';
+          node.innerText+=item.help();
+          if(name!=='help'){
+            node.addEventListener('click',(event)=>{
+              console.log('hi')
+              let cloneInput=document.createElement('div');
+              cloneInput.innerText=prefix;
+              cloneInput.innerText+=name;
+              document.getElementById("console").insertBefore(cloneInput,document.getElementById('inputDiv'));
+              item.run();
+              reset();
+            })
+          }
+          document.getElementById("console").insertBefore(node,document.getElementById('inputDiv'));
+        })
+        
+      }
+      Help.help=()=>{
+        return('Display this help message.')
+      }
+      CommandInstances.push(Help);
       // IO
-      let input=new Array;
+      
       
       // regular
       document.addEventListener('keydown',(event)=>{
@@ -65,7 +112,6 @@
         }
         // enter
         if(event.which==13){
-          console.log(input);
           let inputStr='';
           input.forEach((item)=>{
             if(item!='/')
@@ -76,21 +122,24 @@
           let node = document.createElement('div');
           node.innerText=prefix+inputStr;
           document.getElementById("console").insertBefore(node,document.getElementById('inputDiv'));
-
-          console.log(inputStr)
-          input=new Array;
-          document.getElementById('input').innerText='';
+          reset()
           
-          LS.run();
+
         }
           
       });
       document.addEventListener('keydown',(e)=>{
 
       })
+      function reset() {
+        input=new Array;
+        document.getElementById('input').innerText='';
+        document.getElementById('input').scrollIntoView();
+      }
       // init
       function init(){
         Logo.run();
+        Help.run();
       }
     </script>
   </head>
