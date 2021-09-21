@@ -4,26 +4,30 @@
     <meta charset="UTF-8">
     <meta name="keywords" content="TCIRC, 臺中一中電腦資訊研習社">
     <title>TCIRC 臺中一中電腦資訊研習社</title>
-    <link rel="shortcut icon" href="https://tcirc.tw/favicon.ico" type="image/favicon.png" />
-    <link rel="icon" href="https://tcirc.tw/favicon.ico" type="image/favicon.png" />
+    <link rel="shortcut icon" href="images/favicon.png" type="image/favicon.png" />
+    <link rel="icon" href="images/favicon.png" type="image/favicon.png" />
     <link rel="stylesheet" href="assets/css/main.css">
     <script>
+      // what to show before input
       let prefix='guest@tcirc.tw:~$ ';
       let input=new Array;
       // links, ['displayName', 'hyperLink(need https:// etc.)']
-      let courseList=[["Google","https://google.com"],["Youtube", "https://youtube.com"]];
+      let courseList=[["Python 第一週講義","https://hackmd.io/@tcirc39th/r1qu5SjGK"],["C++ 教學講義", "https://hackmd.io/@tcirc39th/SkLG9Hjft#/"]];
 
       // define commands
       class Command {
         constructor(command){
           this.command=command;
         }
+        // for testing
         consoleLog(){
           console.log(this.command);
         }
+        // run
         run(){
           console.log("not defined")
         }
+        // help message
         help(){
           return('Help message here!'); 
         }
@@ -32,17 +36,17 @@
         }
       };
 
-      let CommandInstances=[]
+      // store every command object for help command lookup
+      let CommandInstances=[];
 
+      // list all file
       let LS = new Command("ls");
-
       LS.run=()=>{
         courseList.forEach((item)=>{
           let node = document.createElement('a');
           node.innerText=item[0];
           node.href=item[1];
-          document.getElementById("console").insertBefore(node,document.getElementById('inputDiv'));
-          node.scrollIntoView();
+          document.getElementById('console').insertBefore(node,document.getElementById('inputDiv'));
         })
       }
       LS.help=()=>{
@@ -50,21 +54,24 @@
       }
       CommandInstances.push(LS)
 
-      let Logo = new Command("logo");
-
+      // show awsome logo
+      let Logo = new Command('logo');
       Logo.run=()=>{
         let souceNode = document.getElementById('ascii');
-        let node=souceNode.cloneNode(true)
+        let node=souceNode.cloneNode(true);
         node.hidden=false;
         node.style.display='inline';
-        document.getElementById("console").insertBefore(node,document.getElementById('inputDiv'))
-        node.scrollIntoView();
+        document.getElementById('console').insertBefore(node,document.getElementById('inputDiv'));
+        let message = document.createElement('div');
+        message.innerText='TCIRC 39TH';
+        document.getElementById('console').insertBefore(message,document.getElementById('inputDiv'));
       }
       Logo.help=()=>{
         return('Output awsome ascii art logo.')
       }
       CommandInstances.push(Logo)
 
+      // help
       let Help= new Command("help");
       Help.run=()=>{
         let display = document.createElement('div');
@@ -78,7 +85,6 @@
           node.innerText+=item.help();
           if(name!=='help'){
             node.addEventListener('click',(event)=>{
-              console.log('hi')
               let cloneInput=document.createElement('div');
               cloneInput.innerText=prefix;
               cloneInput.innerText+=name;
@@ -89,18 +95,17 @@
           }
           document.getElementById("console").insertBefore(node,document.getElementById('inputDiv'));
         })
-        
       }
       Help.help=()=>{
         return('Display this help message.')
       }
       CommandInstances.push(Help);
-      // IO
       
       
-      // regular
+      // input
       document.addEventListener('keydown',(event)=>{
         document.getElementById('inputDiv').scrollIntoView();
+        // regular
         if((48<=event.which&&event.which<=90)||(96<=event.which&&event.which<=111)||(160<=event.which&&event.which<=165)||(186<=event.which&&event.which<=223)){
           input.push(event.key);
           document.getElementById('input').innerText+=event.key;
@@ -118,19 +123,14 @@
               inputStr+=item;
             else console.log('bad command')
           });
-          
+          // scroll and reset after enter
           let node = document.createElement('div');
           node.innerText=prefix+inputStr;
           document.getElementById("console").insertBefore(node,document.getElementById('inputDiv'));
           reset()
-          
-
         }
-          
       });
-      document.addEventListener('keydown',(e)=>{
-
-      })
+      // Reset input Array and scroll for last command
       function reset() {
         input=new Array;
         document.getElementById('input').innerText='';
@@ -146,10 +146,11 @@
   <body onload="init()">
     <div class="console"id="console">
       TCIRC 39 th console style homepage, by <a href="https://github.com/ianiiaannn">@ianiiaannn</a>. <a href="https://github.com/TCIRC/tcirc.github.io">GitHub</a><br>
-      
       <a href="old/38">38 th 學長的網站</a>
+      <!-- inputDiv (VERY IMPORTANT) -->
       <div class="inputDiv" id="inputDiv">guest@tcirc.tw:~$ <span id="input"></span></div>
     </div>
+    <!-- Ascii art logo (hidden) -->
     <span class="ascii" id="ascii" hidden style="color: white; background: black;
 display:none;
 white-space:pre;
