@@ -113,21 +113,41 @@
         // space
         if(event.which==32){
           input.push(' ');
-          document.getElementById('input').innerText+=' ';
+          document.getElementById('input').innerText+='\xa0';
         }
         // enter
         if(event.which==13){
           let inputStr='';
+          let inputCommand;
+          let inputParameter=[];
           input.forEach((item)=>{
             if(item!='/')
               inputStr+=item;
-            else console.log('bad command')
           });
-          // scroll and reset after enter
-          let node = document.createElement('div');
-          node.innerText=prefix+inputStr;
-          document.getElementById("console").insertBefore(node,document.getElementById('inputDiv'));
-          reset()
+          inputParameter=inputStr.split(' ');
+          inputCommand=inputParameter[0];
+          inputParameter.shift();
+          let success=false;
+          CommandInstances.forEach((item)=>{
+            let name=item.get();
+            if(name==inputCommand){
+              let node = document.createElement('div');
+              node.innerText=prefix+inputStr;
+              document.getElementById("console").insertBefore(node,document.getElementById('inputDiv'));
+              reset();
+              item.run();
+              success=true;
+            }
+          })
+          if(!success){
+            let node = document.createElement('div');
+            node.innerText=prefix+inputStr;
+            document.getElementById("console").insertBefore(node,document.getElementById('inputDiv'));
+            reset();
+            let display = document.createElement('div');
+            display.innerText='Command: '+inputCommand+' not found.';
+            document.getElementById("console").insertBefore(display,document.getElementById('inputDiv'));
+          }
         }
       });
       // Reset input Array and scroll for last command
