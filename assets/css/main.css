@@ -22,3 +22,15 @@ body, html{
   padding-right: 17px;
   box-sizing: content-box;
 }
+a:link{
+  color:white;
+}
+a:visited{
+  color:white;
+}
+a:hover{
+  color:white;
+}
+a:active{
+  color:white;
+}
