@@ -9,18 +9,16 @@ body, html{
   width: 99%;
   margin-left: auto;
   margin-right: auto;
+  border:red,0px,solid;
 }
 .console::webkit-scrollbar{
   display: none;
 }
 .console{
-
-  position: relative;
   height: 100%;
+  width: 100%;
   -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.inputDiv {
-  position: absolute;
-  bottom: 0;
+  overflow-y: scroll;
+  padding-right: 17px;
+  box-sizing: content-box;
 }
