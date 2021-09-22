@@ -141,7 +141,7 @@ let IG = new Command('ig');
               inputStr+=item;
           });
           inputParameter=inputStr.split(' ');
-          inputCommand=inputParameter[0];
+          inputCommand=inputParameter[0].toLowerCase();
           inputParameter.shift();
           let success=false;
           CommandInstances.forEach((item)=>{
@@ -182,8 +182,7 @@ let IG = new Command('ig');
   </head>
   <body onload="init()">
     <div class="console"id="console">
-      TCIRC 39 th console style homepage, by <a href="https://github.com/ianiiaannn">@ianiiaannn</a>. <a href="https://github.com/TCIRC/tcirc.github.io">GitHub</a><br>
-      <a href="old/38">38 th 學長的網站</a>
+      TCIRC 39 th console style homepage,written by <a href="https://github.com/ianiiaannn">@ianiiaannn</a> with ❤️. <a href="https://github.com/TCIRC/tcirc.github.io">GitHub</a><br>
       <!-- inputDiv (VERY IMPORTANT) -->
       <div class="inputDiv" id="inputDiv">guest@tcirc.tw:~$ <span id="input"></span></div>
     </div>
@@ -224,13 +223,22 @@ border-color:lightgray;">
 <table id="courseList" hidden>
   <tr>
     <th>第一週講義</th>
-    <td><a href="https://hackmd.io/@tcirc39th/SkLG9Hjft#/">C++</a></td>
-    <td><a href="https://hackmd.io/@tcirc39th/r1qu5SjGK">Python</a></td>
+    <td><a class="exec" href="https://hackmd.io/@tcirc39th/SkLG9Hjft#/">C++</a></td>
+    <td><a class="exec" href="https://hackmd.io/@tcirc39th/r1qu5SjGK">Python</a></td>
   </tr>
   <tr>
     <th>第二週講義</th>
     <!--<td><a href="">C++</a></td>-->
-    <td><a href="https://hackmd.io/@tcirc39th/BJx40BiGK#/">Python</a></td>
+    <td><a class="exec" href="https://hackmd.io/@tcirc39th/BJx40BiGK#/">Python</a></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><a class="exec" href="old/38/index.html">38 th 學長的網站</a></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><a class="exec" href="https://judge.tcirc.tw">Judge system</a></td>
+    <td><a class="exec" href="https://github.com/TCIRC/tcirc.github.io">Github</a></td>
   </tr>
 </table>
 
