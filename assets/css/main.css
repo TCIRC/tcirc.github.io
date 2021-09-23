@@ -54,3 +54,21 @@ td{
   -webkit-background-clip: text;
   color: rgba(0,0,0,.2);
 }
+.blink{
+  animation: blink 1s infinite;
+}
+@keyframes blink{
+  50%{
+    opacity: 0;
+  }
+}
+.hoverSwing:hover{
+  animation: swing 2s infinite;
+}
+@keyframes swing{
+  15%{transform: translateX(10px);}
+  35%{transform: translateX(5px);}
+  50%{transform: translateX(15px);}
+  70%{transform: translateX(10px);}
+  80%{transform: translateX(20px);}
+}

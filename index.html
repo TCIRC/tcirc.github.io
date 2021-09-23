@@ -71,8 +71,8 @@
       }
       CommandInstances.push(Logo)
 
-// show awsome logo
-let IG = new Command('ig');
+      // show IG qrcode
+      let IG = new Command('ig');
       IG.run=()=>{
         let souceNode = document.getElementById('ig');
         let node=souceNode.cloneNode(true);
@@ -85,6 +85,20 @@ let IG = new Command('ig');
         return('Output awsome ascii art IG QRCODE.')
       }
       CommandInstances.push(IG)
+      
+      //clr
+      let CLR = new Command('clr');
+      CLR.run=()=>{
+        let console=document.getElementById('console');
+        Array.from(console.children).forEach((item)=>{
+          if(item.id!='intro'&&item.id!='inputDiv')
+            console.removeChild(item);
+        })
+      }
+      CLR.help=()=>{
+        return('Cleanup everything');
+      }
+      CommandInstances.push(CLR);
 
       // help
       let Help= new Command("help");
@@ -96,6 +110,7 @@ let IG = new Command('ig');
           let node = document.createElement('div');
           let name=item.get();
           node.innerText=name;
+          node.className="hoverSwing";
           node.innerText+=' -> ';
           node.innerText+=item.help();
           if(name!=='help'){
@@ -131,6 +146,14 @@ let IG = new Command('ig');
           input.push(' ');
           document.getElementById('input').innerText+='\xa0';
         }
+        // Backspace
+        if(event.which==8){
+          input.pop();
+          document.getElementById('input').innerText='';
+          for(let i=0;i<=input.length-1;i++){
+            document.getElementById('input').innerText+=input[i];
+          }
+        }
         // enter
         if(event.which==13){
           let inputStr='';
@@ -161,7 +184,7 @@ let IG = new Command('ig');
             document.getElementById("console").insertBefore(node,document.getElementById('inputDiv'));
             reset();
             let display = document.createElement('div');
-            display.innerText='Command: '+inputCommand+' not found.';
+            display.innerText=inputCommand+': command not found.';
             document.getElementById("console").insertBefore(display,document.getElementById('inputDiv'));
           }
           document.getElementById('inputDiv').scrollIntoView();
@@ -182,9 +205,9 @@ let IG = new Command('ig');
   </head>
   <body onload="init()">
     <div class="console"id="console">
-      TCIRC 39 th console style homepage,written by <a href="https://github.com/ianiiaannn">@ianiiaannn</a> with ❤️. <a href="https://github.com/TCIRC/tcirc.github.io">GitHub</a><br>
+      <div id="intro"><a href="https://github.com/TCIRC/tcirc.github.io">TCIRC 39 th console style homepage</a>, coded by <a href="https://github.com/ianiiaannn">@ianiiaannn</a> with lots of ❤️. <span onclick="Help.run()">Help</span><br></div>
       <!-- inputDiv (VERY IMPORTANT) -->
-      <div class="inputDiv" id="inputDiv">guest@tcirc.tw:~$ <span id="input"></span></div>
+      <div class="inputDiv" id="inputDiv">guest@tcirc.tw:~$ <span id="input"></span><span class="blink">&block;</span></div>
     </div>
     <!-- Ascii art logo (hidden) -->
     <span class="ascii" id="ascii" hidden style="color: white; background: black;
