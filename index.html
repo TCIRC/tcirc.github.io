@@ -11,17 +11,12 @@
       // what to show before input
       let prefix='guest@tcirc.tw:~$ ';
       let input=new Array;
-      // links, ['displayName', 'hyperLink(need https:// etc.)']
-      //let courseList=[["Python 第一週講義","https://hackmd.io/@tcirc39th/r1qu5SjGK"],["C++ 教學講義", "https://hackmd.io/@tcirc39th/SkLG9Hjft#/"]];
 
-      // define commands
+      // Command(string command name in lowercase).
+      //          \OO in Javascript/
       class Command {
         constructor(command){
           this.command=command;
-        }
-        // for testing
-        consoleLog(){
-          console.log(this.command);
         }
         // run
         run(){
@@ -29,8 +24,9 @@
         }
         // help message
         help(){
-          return('Help message here!'); 
+          return('Override this to display help message'); 
         }
+        // for help command, strange constructor bug?
         get(){
           return this.command;
         }
@@ -39,7 +35,7 @@
       // store every command object for help command lookup
       let CommandInstances=[];
 
-      // list all file
+      // clone and display the table
       let LS = new Command("ls");
       LS.run=()=>{
         let souceNode = document.getElementById('courseList');
@@ -53,7 +49,7 @@
       }
       CommandInstances.push(LS)
 
-      // show awsome logo
+      // show(clone and display) the awsome logo
       let Logo = new Command('logo');
       Logo.run=()=>{
         let souceNode = document.getElementById('ascii');
@@ -67,7 +63,7 @@
         document.getElementById('inputDiv').scrollIntoView();
       }
       Logo.help=()=>{
-        return('Output awsome ascii art logo.')
+        return('Display awsome ascii art logo.')
       }
       CommandInstances.push(Logo)
 
@@ -86,7 +82,7 @@
         document.getElementById('inputDiv').scrollIntoView();
       }
       Logo.help=()=>{
-        return('Output awsome ascii art IG QRCODE.')
+        return('If browser is PC, display ig QR code else display a link.')
       }
       CommandInstances.push(IG)
       
@@ -100,7 +96,7 @@
         })
       }
       CLR.help=()=>{
-        return('Cleanup everything');
+        return('Clean screen.');
       }
       CommandInstances.push(CLR);
 
