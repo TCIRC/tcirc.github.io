@@ -81,7 +81,7 @@
         document.getElementById('console').insertBefore(node,document.getElementById('inputDiv'));
         document.getElementById('inputDiv').scrollIntoView();
       }
-      Logo.help=()=>{
+      IG.help=()=>{
         return('If browser is PC, display ig QR code else display a link.')
       }
       CommandInstances.push(IG)
@@ -99,7 +99,8 @@
         return('Clean screen.');
       }
       CommandInstances.push(CLR);
-
+      
+      let helpCount = 0;
       // help
       let Help= new Command("help");
       Help.run=()=>{
@@ -125,6 +126,18 @@
           }
           document.getElementById("console").insertBefore(node,document.getElementById('inputDiv'));
         })
+        //      \EASTER EGG TIME/
+        helpCount++;
+        if(helpCount>3){
+          let node = document.createElement('a');
+          node.innerText="creeper?";
+          node.className="hoverSwing";
+          node.innerText+=' -> ';
+          node.innerText+='aww, man.';
+          let rick=['https://www.youtube.com/watch?v=dQw4w9WgXcQ','https://www.youtube.com/watch?v=072tU1tamd0','https://www.youtube.com/watch?v=uRB1G0cKpIk&t','https://www.youtube.com/watch?v=j6P_m6adkgc']
+          node.href=rick[Math.floor(Math.random()*rick.length)];
+          document.getElementById("console").insertBefore(node,document.getElementById('inputDiv'));
+        }
         document.getElementById('inputDiv').scrollIntoView();
       }
       Help.help=()=>{
