@@ -87,18 +87,18 @@
       CommandInstances.push(IG)
       
       //clr
-      let CLR = new Command('clr');
-      CLR.run=()=>{
+      let CLEAR = new Command('clear');
+      CLEAR.run=()=>{
         let console=document.getElementById('console');
         Array.from(console.children).forEach((item)=>{
           if(item.id!='intro'&&item.id!='inputDiv')
             console.removeChild(item);
         })
       }
-      CLR.help=()=>{
+      CLEAR.help=()=>{
         return('Clean screen.');
       }
-      CommandInstances.push(CLR);
+      CommandInstances.push(CLEAR);
       
       let helpCount = 0;
       // help
@@ -265,6 +265,10 @@ border-color:lightgray;">
 <!-- 社課講義表格 -->
 <table id="courseList" hidden>
   <tr>
+    <th>其他重要講義</th>
+    <td><a class="exec" href="https://hackmd.io/@tcirc39th/rJTgH_HHF#/">IDE 教學</a></td>
+  </tr>
+  <tr>
     <th>第一週講義</th>
     <td><a class="exec" href="https://hackmd.io/@tcirc39th/SkLG9Hjft#/">C++</a></td>
     <td><a class="exec" href="https://hackmd.io/@tcirc39th/r1qu5SjGK">Python</a></td>
@@ -274,6 +278,11 @@ border-color:lightgray;">
     <td><a class="exec" href="https://hackmd.io/@tcirc39th/HJ89d3oVt#/">C++</a></td>
     <td><a class="exec" href="assets/kanata/bitwise_operation.pptx">C++ BITWISE</a></td>
     <td><a class="exec" href="https://hackmd.io/@tcirc39th/BJx40BiGK#/">Python</a></td>
+  </tr>
+  <tr>
+    <th>第三週講義</th>
+    <td><a class="exec" href="https://hackmd.io/@tcirc39th/B1-rL1jBF#/">C++</a></td>
+    <td><a class="exec" href="https://hackmd.io/@tcirc39th/S13mPuZHt#/">Python</a></td>
   </tr>
   <tr>
     <td></td>
