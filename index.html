@@ -146,7 +146,19 @@
       }
       CommandInstances.push(Help);
       
-      
+      // mogu
+      let Mogu = new Command('mogu');
+      Mogu.run=()=>{
+        let souceNode = document.getElementById('mogu');
+        let node=souceNode.cloneNode(true);
+        node.hidden=false;
+        document.getElementById('console').insertBefore(node,document.getElementById('inputDiv'));
+      }
+      Mogu.help=()=>{
+        return('?')
+      }
+      CommandInstances.push(Mogu)
+
       // input
       document.addEventListener('keydown',(event)=>{
         document.getElementById('inputDiv').scrollIntoView();
@@ -219,6 +231,7 @@
       // init
       function init(){
         Logo.run();
+        Mogu.run();
         Help.run();
       }
     </script>
@@ -316,6 +329,11 @@ border-color:lightgray;">
     <td><a class="exec" href="https://hackmd.io/@tcirc39th/ryOm2wDb9#/">DSA</a></td>
   </tr>
   <tr>
+    <th>10番目講義</th>
+    <td><a class="exec" href="https://hackmd.io/@tcirc39th/rkUXd1wW9#/">We<del>ed</del>b</a></td>
+    <td><a class="exec" href="https://hackmd.io/@tcirc39th/rypInPem5#/">DSA</a></td>
+  </tr>
+  <tr>
     <td></td>
     <td><a class="exec" href="old/38/index.html">38 th 學長的網站</a></td>
     <td><a class="exec" href="https://bbs.tcirc.tw/">龍夢紀元</a></td>
@@ -344,4 +362,5 @@ border-color:lightgray;">
 █&nbsp;███&nbsp;█&nbsp;█&nbsp;&nbsp;█▀▄▀▀█&nbsp;&nbsp;█▀█&nbsp;▄▀▀▄&nbsp;█<br>
 █▄▄▄▄▄█&nbsp;███▀▄&nbsp;█&nbsp;▄&nbsp;▄▄█&nbsp;&nbsp;▀&nbsp;█&nbsp;█&nbsp;<br><a id="ig_link" href="https://www.instagram.com/tcirc_39th/">@tcirc_39th<span></span></span></a></p>
   </body>
+  <iframe hidden id="mogu" width="560" height="315" src="https://www.youtube.com/embed/j6P_m6adkgc?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </html>
