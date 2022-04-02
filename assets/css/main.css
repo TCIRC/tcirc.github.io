@@ -9,7 +9,7 @@ body, html{
   margin-left: auto;
   margin-right: auto;
   border:red,0px,solid;
-  cursor: url(https://yt3.ggpht.com/5qzIph_e0X-QV2EkArqGH8vbXXJKzl2tRjfQ5fH9ccGxCwRn-AeW-MMbRAJc-6geK7LC0LFbmQ=w48-h48-c-k-nd), auto;
+  
 }
 .console::webkit-scrollbar{
   display: none;
