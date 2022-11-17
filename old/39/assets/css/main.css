@@ -1,0 +1,75 @@
+body, html{ 
+  background-color: black;
+  height: 99%;
+  overflow: hidden;
+  color:white;
+  font-size: 15px;
+  font-family: monospace;
+  width: 99%;
+  margin-left: auto;
+  margin-right: auto;
+  border:red,0px,solid;
+  
+}
+.console::webkit-scrollbar{
+  display: none;
+}
+.console{
+  height: 100%;
+  width: 100%;
+  -ms-overflow-style: none;
+  overflow-y: scroll;
+  padding-right: 17px;
+  box-sizing: content-box;
+}
+a:link{
+  color:white;
+}
+a:visited{
+  color:white;
+}
+a:hover{
+  color:white;
+}
+a:active{
+  color:white;
+}
+th{
+  color:#546fd2;
+}
+td{
+  color:#75ed7a;
+  padding-left:30px;
+}
+.exec:visited, .exec:active, .exec:link, .exec:hover{
+  color:#75ed7a;
+}
+.ig{
+  background: #f09433; 
+  background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+  background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+  background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+  line-height: 0px;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: rgba(0,0,0,.2);
+}
+.blink{
+  animation: blink 1s infinite;
+}
+@keyframes blink{
+  50%{
+    opacity: 0;
+  }
+}
+.hoverSwing:hover{
+  animation: swing 2s infinite;
+}
+@keyframes swing{
+  15%{transform: translateX(10px);}
+  35%{transform: translateX(5px);}
+  50%{transform: translateX(15px);}
+  70%{transform: translateX(10px);}
+  80%{transform: translateX(20px);}
+}
