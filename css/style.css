@@ -41,6 +41,56 @@
 	p {
 		line-height: 2em;
 	}
+		.typing-cursor {
+			margin-left: 3px;
+			animation: blink 1s infinite;
+		}
+	
+		@keyframes blink {
+			0% {
+				opacity: 1;
+			}
+	
+			50% {
+				opacity: 0;
+			}
+	
+			100% {
+				opacity: 1;
+			}
+		}
+	
+		/* 新增的樣式 */
+		#extra .container {
+			max-width: 1200px;
+			/* 縮小容器寬度 */
+			margin: 0 auto;
+			padding: 20px;
+		}
+	
+		#extra .image.featured img {
+			max-height: 250px;
+			/* 縮小圖片高度 */
+			object-fit: cover;
+		}
+	
+		#extra .box {
+			padding: 15px;
+			/* 縮小 box 內部間距 */
+			margin-top: 10px;
+			/* 縮小上方間距 */
+		}
+	
+		#extra .box p {
+			font-size: 20px !important;
+			/* 縮小文字大小 */
+			margin-bottom: 10px;
+		}
+	
+		#extra .row.no-collapse-1 {
+			margin-bottom: 20px;
+			/* 縮小行之間的間距 */
+		}
 
 	h1, h2, h3, h4, h5, h6 {
 		margin: 0;

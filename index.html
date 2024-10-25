@@ -48,8 +48,9 @@
 				<!-- Banner -->
 					<div id="banner" class="container">
 						<section>
-							<p style="font-size: 50px;"><b>歡迎來到中一中電研OwOb</b></p>
-							<p style="font-size: 30px;"><b>這裡有一群愛寫程式的人</b></p>
+							<p id="text1" style="font-size: 50px; margin: 0;"><b></b><span class="typing-cursor">|</span></p>
+							<p id="text2" style="font-size: 30px; margin: 10px 0;"><b></b><span class="typing-cursor" style="display: none;">|</span></p>
+							<br>
 							<a href="https://discord.gg/dRMcKXCyJB" class="button medium">Discord</a>
 						</section>
 					</div>
@@ -60,50 +61,95 @@
 							<div class="row no-collapse-1">
 								<section class="4u"> <a href="#" class="image featured"><img src="images/me.png" alt=""></a>
 									<div class="box">
-										<p style="font-size: 25px;"><b>社長 楊佳泰</b></p>
-										<a href="https://www.instagram.com/maoguayang/" class="button">Link</a> </div>
+										<p><b>社長 楊佳泰</b></p>
+										<a href="https://www.instagram.com/maoguayang/" class="button">Follow</a> </div>
 								</section>
 								<section class="4u"> <a href="#" class="image featured"><img src="images/me.png" alt=""></a>
 									<div class="box">
-										<p style="font-size: 25px;"><b>副社長/教學 葉俊儀</b></p>
-										<a href="https://www.instagram.com/asqwqas_/" class="button">Link</a> </div>
+										<p><b>副社長/教學 葉俊儀</b></p>
+										<a href="https://www.instagram.com/asqwqas_/" class="button">Follow</a> </div>
 								</section>
 								<section class="4u"> <a href="#" class="image featured"><img src="images/me.png" alt="" ></a>
 									<div class="box">
-										<p style="font-size: 25px;"><b>網管/公關aka小編 黃柏文</b></p>
-										<a href="https://www.instagram.com/benson_1522/" class="button">Link</a> </div>
+										<p><b>網管/公關aka小編 黃柏文</b></p>
+										<a href="https://www.instagram.com/benson_1522/" class="button">Follow</a> </div>
 								</section>
 							</div>
 							<div class="row no-collapse-1">
 								<section class="4u"> <a href="#" class="image featured"><img src="images/me.png" alt=""></a>
 									<div class="box">
-										<p style="font-size: 25px;"><b>網管/文書 林余安</b></p>
-										<a href="https://www.instagram.com/yu_an_l6969/" class="button">Link</a> </div>
+										<p><b>網管/文書 林余安</b></p>
+										<a href="https://www.instagram.com/yu_an_l6969/" class="button">Follow</a> </div>
 								</section>
 								<section class="4u"> <a href="#" class="image featured"><img src="images/me.png" alt=""></a>
 									<div class="box">
-										<p style="font-size: 25px;"><b>教學長 洪鈞睿</b></p>
-										<a href="https://www.instagram.com/koukirocks/" class="button">Link</a> </div>
+										<p><b>教學長 洪鈞睿</b></p>
+										<a href="https://www.instagram.com/koukirocks/" class="button">Follow</a> </div>
 								</section>
 								<section class="4u"> <a href="#" class="image featured"><img src="images/me.png" alt=""></a>
 									<div class="box">
-										<p style="font-size: 25px;"><b>總務/教學 洪仕軒</b></p>
-										<a href="https://www.instagram.com/teddy_bear_0201/" class="button">Link</a> </div>
+										<p><b>總務/教學 洪仕軒</b></p>
+										<a href="https://www.instagram.com/teddy_bear_0201/" class="button">Follow</a> </div>
 								</section>
 							</div>
 						</div>
 					</div>
 
-				
-	<!-- Copyright -->
-	<br>
-		<div id="copyright">
-			<div class="container">
+				<!-- Previous Websites Section -->
+				<div id="previous-websites" class="container">
+					<div class="row">
+						<div class="12u">
+							<h2 style="text-align: center; margin: 20px 0; font-size: 40px;"><b>歷屆網站</b></h2>
+							<br>
+							<div style="display: flex; justify-content: center; gap: 20px; margin-bottom: 30px;">
+								<a href="#" class="button">41st</a>
+								<a href="#" class="button">40th</a>
+								<a href="#" class="button">39th</a>
+								<a href="#" class="button">38th</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Copyright -->
+				<br>
+				<div id="copyright">
+					<div class="container">
 						<a href="https://www.instagram.com/tcirc_42nd/">
 							<img src="https://cdn-icons-png.freepik.com/256/15707/15707869.png?semt=ais_hybrid" alt="" style="height: 45px; ">
 						</a>
-			</div>
-		</div>
+					</div>
+				</div>
 
 	</body>
+    <script>
+        function typeWriter(text, elementId, speed, callback) {
+            const element = document.querySelector(elementId + ' b');
+            let i = 0;
+            
+            function type() {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else if (callback) {
+                    if (elementId === '#text1') {
+                        document.querySelector(elementId + ' .typing-cursor').style.display = 'none';
+                        document.querySelector('#text2 .typing-cursor').style.display = 'inline';
+                    }
+                    callback();
+                }
+            }
+            
+            type();
+        }
+
+        window.onload = function() {
+            typeWriter('歡迎來到中一中電研OwOb', '#text1', 100, function() {
+                setTimeout(function() {
+                    typeWriter('這裡有一群愛寫程式的人', '#text2', 100);
+                }, 500);
+            });
+        };
+    </script>
 </html>
